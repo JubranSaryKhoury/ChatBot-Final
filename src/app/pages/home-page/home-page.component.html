@@ -1,0 +1,26 @@
+<div
+  class="home-page"
+  [ngClass]="{ 'mobile-sidebar-open': sideBarOpened }"
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+  <div class="side-bar">
+    <app-side-bar
+      (sidebarClosed)="closeSideBar()"
+      (conversationSelected)="handleConversationSelected()"
+    ></app-side-bar>
+  </div>
+  <div class="main-chat">
+    <div class="open-side-bar" (click)="openSideBar()">
+      <img
+        class="icon"
+        src="bars-3.svg"
+        [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+      />
+    </div>
+    <app-main-chat></app-main-chat>
+  </div>
+  <div class="input">
+    <app-input></app-input>
+  </div>
+</div>

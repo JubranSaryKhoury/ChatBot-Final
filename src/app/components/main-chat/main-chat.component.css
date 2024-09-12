@@ -1,0 +1,76 @@
+.container {
+  box-sizing: border-box;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.all {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+header {
+  text-align: center;
+}
+.chat-ai {
+  font-size: 1.3vw;
+  font-weight: bold;
+  color: var(--chatAi);
+  border-radius: 30px;
+  padding: 10px 20px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+h1 {
+  font-size: 2.5vw;
+  color: var(--h1);
+}
+
+.body {
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 17% 5% 35% 35%;
+  grid-template-rows: 33% 33% 33%;
+  column-gap: 10px;
+  row-gap: 5px;
+}
+
+.dashes {
+  align-self: center;
+  justify-self: center;
+}
+
+.dark-icon {
+  filter: invert(100%);
+}
+
+@media (max-width: 500px) {
+  .body {
+    grid-template-columns: 22% 5% 32% 32%;
+  }
+
+  .chat-ai {
+    font-size: large;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 1200px) {
+  .chat-ai {
+    font-size: large;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+}

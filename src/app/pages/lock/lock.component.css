@@ -1,0 +1,44 @@
+.left-right {
+  display: flex;
+  width: 100vw;
+  height: 100%;
+}
+
+.hidden {
+  height: 100%;
+  width: 50%;
+}
+
+.left {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.right {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+app-log-in {
+  margin: auto;
+}
+
+app-sign-up {
+  margin: auto;
+}
+
+@media (max-width: 800px) {
+  .hidden {
+    display: none;
+  }
+  .right {
+    width: 100%;
+    justify-content: start;
+  }
+}

@@ -1,0 +1,127 @@
+<div class="chat-container" #chatContainer>
+  <!-- loading ... -->
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <!-- Show messages when data is loaded -->
+  <div *ngIf="!loading" class="messages">
+    <div *ngFor="let group of messages$ | async">
+      <!-- Today, Yesterday,... -->
+      <div class="date-header">
+        <h3>{{ group.date }}</h3>
+      </div>
+      <div *ngFor="let message of group.messages">
+        <!-- If a user sends a message, align to the right -->
+        <div
+          class="message-icon"
+          *ngIf="message.sender === userEmail && userRole === 'user'"
+          [ngClass]="{
+            'message-right': message.sender === userEmail,
+            'message-left': message.sender !== userEmail
+          }"
+        >
+          <div class="message-content">
+            <p>{{ message.text }}</p>
+            <!-- Display image if available -->
+            <img
+              *ngIf="message.imageUrl"
+              [src]="message.imageUrl"
+              alt="Image"
+              class="message-image"
+            />
+            <small>{{ message.sendDate | date : "shortTime" }}</small>
+          </div>
+          <img
+            class="icon"
+            src="user.svg"
+            alt="User Icon"
+            [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+          />
+        </div>
+
+        <!-- If a user receives a message, align to the left -->
+        <div
+          class="message-icon"
+          *ngIf="message.sender !== userEmail && userRole === 'user'"
+          [ngClass]="{
+            'message-right': message.sender === userEmail,
+            'message-left': message.sender !== userEmail
+          }"
+        >
+          <img
+            class="icon"
+            src="bolt.svg"
+            alt="Chat Icon"
+            [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+          />
+          <div class="message-content">
+            <p>{{ message.text }}</p>
+            <!-- Display image if available -->
+            <img
+              *ngIf="message.imageUrl"
+              [src]="message.imageUrl"
+              alt="Image"
+              class="message-image"
+            />
+            <small>{{ message.sendDate | date : "shortTime" }}</small>
+          </div>
+        </div>
+
+        <!-- If a chat sends a message, align to the right -->
+        <div
+          class="message-icon"
+          *ngIf="message.sender === userEmail && userRole === 'chat'"
+          [ngClass]="{
+            'message-right': message.sender === userEmail,
+            'message-left': message.sender !== userEmail
+          }"
+        >
+          <div class="message-content">
+            <p>{{ message.text }}</p>
+            <!-- Display image if available -->
+            <img
+              *ngIf="message.imageUrl"
+              [src]="message.imageUrl"
+              alt="Image"
+              class="message-image"
+            />
+            <small>{{ message.sendDate | date : "shortTime" }}</small>
+          </div>
+          <img
+            class="icon"
+            src="bolt.svg"
+            alt="Chat Icon"
+            [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+          />
+        </div>
+
+        <!-- If a chat receives a message, align to the left -->
+        <div
+          class="message-icon"
+          *ngIf="message.sender !== userEmail && userRole === 'chat'"
+          [ngClass]="{
+            'message-right': message.sender === userEmail,
+            'message-left': message.sender !== userEmail
+          }"
+        >
+          <img
+            class="icon"
+            src="user.svg"
+            alt="User Icon"
+            [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+          />
+          <div class="message-content">
+            <p>{{ message.text }}</p>
+            <!-- Display image if available -->
+            <img
+              *ngIf="message.imageUrl"
+              [src]="message.imageUrl"
+              alt="Image"
+              class="message-image"
+            />
+            <small>{{ message.sendDate | date : "shortTime" }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

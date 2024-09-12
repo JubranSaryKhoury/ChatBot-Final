@@ -1,0 +1,75 @@
+<div class="sign-up-container">
+  <div class="border">
+    <p id="chat-ai">C H A T A.I+</p>
+  </div>
+  <h1>Sign up with free trial</h1>
+  <p>Empower your experience, sign up for a free account today</p>
+
+  <form
+    class="signup-form"
+    #signUpForm="ngForm"
+    (ngSubmit)="registerUser(signUpForm.value)"
+  >
+    <div class="input-group">
+      <label for="email">Email Address*</label>
+      <input
+        ngModel
+        name="email"
+        id="email"
+        type="email"
+        placeholder="ex. email@domain.com"
+        required
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password*</label>
+      <div class="password-container">
+        <input
+          ngModel
+          name="password"
+          id="password"
+          [type]="type"
+          placeholder="Enter password"
+          required
+        />
+        <img
+          class="eye"
+          [src]="img"
+          alt="Show Or Hide Password"
+          (click)="showOrHidePassword()"
+        />
+      </div>
+    </div>
+
+    @if(wrongCredentials){
+    <p class="wrong-credentials">Please enter a valid Email and Password!</p>
+    }
+
+    <p class="terms">
+      By registering for an account, you are consenting to our
+      <a href="#">Terms of Service</a> and confirming that you have reviewed and
+      accepted the <a href="#">Global Privacy Statement</a>.
+    </p>
+
+    <button class="btn-primary">Get started free</button>
+
+    <div class="login-link">
+      Already have an account? <a (click)="changeUI()">Login</a>
+    </div>
+
+    <div class="alternative-signup">
+      <hr />
+      <div class="alt-buttons">
+        <button class="btn-alt">
+          <img src="google.png" alt="Google Logo" />
+          Continue with Google
+        </button>
+        <button class="btn-alt">
+          <img src="Apple-Logo.jpg" alt="Apple Logo" />
+          Continue with Apple
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

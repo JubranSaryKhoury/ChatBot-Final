@@ -1,0 +1,23 @@
+<div class="space-between" [class.active]="isActive()">
+  <a
+    [routerLink]="['/home-page', ConvId]"
+    class="conservation-link"
+    (click)="onTapClick()"
+  >
+    <div class="flex">
+      <img
+        class="icon"
+        src="chat-bubble-bottom-center-text.svg"
+        [class.invert]="isDarkMode || isActive()"
+      />
+      <span>{{ title }}</span>
+    </div>
+  </a>
+
+  <img
+    class="icon"
+    src="trash.svg"
+    [class.invert]="isDarkMode"
+    (click)="deleteConservation()"
+  />
+</div>

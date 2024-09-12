@@ -1,0 +1,28 @@
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 30px;
+  border: 1px solid var(--bottonsBorder);
+  background-color: var(--button);
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+h3 {
+  color: var(--h1);
+}
+
+.button:hover {
+  background-color: var(--bottonsHover);
+}
+
+.dark-icon {
+  filter: invert(100%);
+}

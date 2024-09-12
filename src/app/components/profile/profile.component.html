@@ -1,0 +1,19 @@
+<div class="go-back" (click)="goBack()">
+  <img
+    class="icon"
+    src="arrow-long-left.svg"
+    [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+  />
+</div>
+
+<header>
+  <img
+    class="icon"
+    src="user.svg"
+    [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+  />
+  <h3>{{ email }}</h3>
+</header>
+<div class="button" (click)="Logout()">
+  <span>Logout</span>
+</div>

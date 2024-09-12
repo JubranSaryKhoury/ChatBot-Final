@@ -1,0 +1,28 @@
+<div class="go-back" (click)="goBack()">
+  <img
+    class="icon"
+    src="arrow-long-left.svg"
+    [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+  />
+</div>
+<header>
+  <img
+    class="icon"
+    src="settings.svg"
+    [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+  />
+  <h3>S E T T I N G S</h3>
+</header>
+
+<div class="toggle-mode-btn" (click)="toggleMode()">
+  <div class="flex">
+    <div class="icon-container">
+      <img
+        class="icon"
+        [src]="icon"
+        [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+      />
+    </div>
+    <span>{{ mode }} mode</span>
+  </div>
+</div>

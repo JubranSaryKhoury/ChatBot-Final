@@ -1,0 +1,87 @@
+.conservation-link {
+  width: calc(100% - 50px);
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: var(--tapBackground);
+  color: var(--text-color);
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.conservation-link:hover {
+  background-color: var(--tapHover);
+}
+
+.conservation-link .icon {
+  margin-right: 8px;
+}
+
+.active {
+  background-color: #6967e4;
+  color: white;
+}
+
+.active .conservation-link {
+  background-color: transparent;
+  color: white;
+}
+
+.active .icon {
+  filter: invert(100%);
+}
+
+.invert {
+  filter: invert(100%);
+}
+
+.flex {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.flex span {
+  width: 90%;
+  padding-top: 5px;
+  font-size: 1.2vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.space-between {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; /* Ensures proper positioning */
+}
+
+img.icon {
+  cursor: pointer;
+  flex-shrink: 0; /* Prevents shrinking of the icon */
+}
+
+@media (max-width: 600px) {
+  .flex img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .flex span {
+    font-size: medium;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1200px) {
+  .flex img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .flex span {
+    font-size: medium;
+  }
+}

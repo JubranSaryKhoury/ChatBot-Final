@@ -1,0 +1,18 @@
+<div class="left-right">
+  <!-- Conditionally display the left if the screen is less than 400px -->
+  <div class="hidden">
+    <div class="left">
+      <app-chatai></app-chatai>
+    </div>
+  </div>
+
+  <!-- Always display the right -->
+  <div class="right">
+    <ng-container *ngIf="(status$ | async) === 'signUp'; else logInTemplate">
+      <app-sign-up></app-sign-up>
+    </ng-container>
+    <ng-template #logInTemplate>
+      <app-log-in></app-log-in>
+    </ng-template>
+  </div>
+</div>

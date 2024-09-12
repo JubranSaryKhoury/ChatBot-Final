@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="all">
+    <ng-container *ngIf="DisplayDefault$ | async; else DisplayChatting">
+      <header>
+        <div class="chat-ai">C H A T A.I+</div>
+        <h1>Good day! How may I assist you today?</h1>
+      </header>
+      <div class="body">
+        <app-black-suggestions
+          imgSrc="globe-alt.svg"
+          title="Explore"
+          description="Learn how to use chat.ai platform for your needs"
+        ></app-black-suggestions>
+
+        <img
+          class="dashes"
+          src="pause.svg"
+          [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+        />
+        <app-white-suggestions
+          imgSrc="residential.jpg"
+          title="Explain"
+          description="Quantum computing in simple terms"
+        ></app-white-suggestions>
+        <app-white-suggestions
+          imgSrc="blue.jpg"
+          title="How to"
+          description="Make a search engine platform like google"
+        ></app-white-suggestions>
+        <app-black-suggestions
+          imgSrc="bolt.svg"
+          title="Capable"
+          description="How much capable chat.ai to full-fill your needs"
+        ></app-black-suggestions>
+        <img
+          class="dashes"
+          src="pause.svg"
+          [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+        />
+        <app-white-suggestions
+          imgSrc="brain2.png"
+          title="Remember"
+          description="Quantum computing in simple terms"
+        ></app-white-suggestions>
+        <app-white-suggestions
+          imgSrc="lock.jpg"
+          title="Allows"
+          description="User to provide follow-up corrections"
+        ></app-white-suggestions>
+        <app-black-suggestions
+          imgSrc="exclamation-triangle.svg"
+          title="Limitation"
+          description="How much capable chat.ai to full-fill your needs"
+        ></app-black-suggestions>
+        <img
+          class="dashes"
+          src="pause.svg"
+          [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+        />
+        <app-white-suggestions
+          imgSrc="X.png"
+          title="May"
+          description="May generate incorrect information"
+        ></app-white-suggestions>
+        <app-white-suggestions
+          imgSrc="ai.png"
+          title="Limited"
+          description="Knowledge of world and events after 2021"
+        ></app-white-suggestions>
+      </div>
+    </ng-container>
+    <ng-template #DisplayChatting>
+      <app-chat [conservationId]="conservationId || ''"></app-chat>
+    </ng-template>
+  </div>
+</div>

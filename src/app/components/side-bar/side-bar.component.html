@@ -1,0 +1,93 @@
+<div class="container">
+  <!-- Check if settings are open -->
+  <ng-container
+    *ngIf="(status$ | async) === 'settingsIsOpened'; else settingsIsClosed"
+  >
+    <app-settings></app-settings>
+  </ng-container>
+
+  <ng-template #settingsIsClosed>
+    <!-- Check if profile is open -->
+    <ng-container
+      *ngIf="
+        (profilestatus$ | async) === 'profilesIsOpened';
+        else profilesIsClosed
+      "
+    >
+      <app-profile></app-profile>
+    </ng-container>
+
+    <ng-template #profilesIsClosed>
+      <!-- sidebar -->
+      <header>
+        <div class="flex">
+          <h2>C H A T A.I+</h2>
+          <img
+            class="close-side-bar"
+            src="bars-arrow-up.svg"
+            alt="User Icon"
+            [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+            (click)="closeSidebar()"
+          />
+        </div>
+        <div class="new-chat">
+          <ng-container>
+            <img
+              id="new-chat-img"
+              class="icon"
+              src="new-chat.svg"
+              (click)="newChat(); closeSidebar()"
+            />
+          </ng-container>
+        </div>
+      </header>
+      <hr />
+      <div class="conversations-container">
+        <div class="conversations-title">History</div>
+        <a class="clear-link">Clear All</a>
+      </div>
+      <hr />
+
+      <div class="top-lower">
+        <!-- Loading message -->
+        <div *ngIf="isLoading" class="loading-message">Loading...</div>
+        <!-- No conversations message -->
+        <div *ngIf="!isLoading && isEmpty" class="no-conversations-message">
+          <div class="history-empty">
+            <p>History Is Empty</p>
+            <img
+              class="icon"
+              src="book-open.svg"
+              [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+            />
+          </div>
+        </div>
+        <!-- Conversations history -->
+        <div class="history" *ngIf="!isLoading">
+          <app-tap
+            *ngFor="let conservation of allConservations"
+            [title]="conservation.firstMessage.text"
+            [ConvId]="conservation.id.toString()"
+            (tapSelected)="handleTapSelection()"
+          ></app-tap>
+        </div>
+
+        <div class="buttons">
+          <div class="settings-button" (click)="openSettings()">
+            <div class="icon-container">
+              <img class="icon" src="settings.svg" />
+            </div>
+            <span>Settings</span>
+          </div>
+
+          <div class="profile-button" (click)="openProfile()">
+            <div class="icon-container">
+              <img class="icon" src="user.svg" />
+            </div>
+            <span>{{ email }}</span>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>

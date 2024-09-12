@@ -1,0 +1,38 @@
+<div class="all">
+  <!-- Image -->
+  <div *ngIf="selectedImage" class="image-preview-container">
+    <div class="image-wrapper">
+      <img [src]="selectedImage" alt="Preview" class="selected-image" />
+      <button class="remove-button" (click)="removeImage()">X</button>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <img
+      class="icon"
+      src="photo.svg"
+      alt="img Icon"
+      [ngClass]="{ 'dark-icon': mode === theme.DARK }"
+      (click)="openFileBrowser()"
+    />
+    <input
+      #fileInput
+      type="file"
+      accept="image/*"
+      hidden
+      (change)="onFileSelected($event)"
+    />
+    <input
+      type="text"
+      placeholder="What's in your mind?..."
+      [(ngModel)]="newMessage"
+      (keydown.enter)="sendMessage()"
+    />
+    <img
+      src="paper-airplane.svg"
+      alt="paper-airplane"
+      class="icon arrow-icon"
+      (click)="sendMessage()"
+    />
+  </div>
+</div>
